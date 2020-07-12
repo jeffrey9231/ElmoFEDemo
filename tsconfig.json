@@ -14,15 +14,7 @@
     "strictNullChecks": false,
     "outDir": "build",
     "keyofStringsOnly": true,
-    "lib": [
-      "es6",
-      "es7",
-      "dom"
-    ]
+    "lib": ["es6", "es7", "dom"]
   },
-  "exclude": [
-    "dist",
-    "build",
-    "node_modules"
-  ]
+  "exclude": ["dist", "build", "node_modules"]
 }

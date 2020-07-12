@@ -1,22 +1,21 @@
-import * as React from 'react';
-import * as FetchActions from '../../actions';
-import * as style from '../style.css';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import Button from '@material-ui/core/Button';
-import { get } from 'lodash';
-import { RouteComponentProps } from 'react-router';
-import { RootState } from '../../reducers';
+import * as React from "react";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import Button from "@material-ui/core/Button";
+import { get } from "lodash";
+import { RouteComponentProps } from "react-router";
 
-export namespace Search {
-  export interface Props extends RouteComponentProps<void> {
-    users: UserAccountDetails[];
-    actions: typeof FetchActions;
-  }
+import * as FetchActions from "../../actions";
+import * as style from "../style.css";
+import { RootState } from "../../reducers";
 
-  export interface State {
-    searchQuery:string
-  }
+export interface SearchProps extends RouteComponentProps<void> {
+  users: UserAccountDetails[];
+  actions: typeof FetchActions;
+}
+
+export interface SearchState {
+  searchQuery: string;
 }
 
 interface ListItemProps {
@@ -30,10 +29,14 @@ const ListItem = (props: ListItemProps) => {
   const { name, id, history } = props;
   return (
     <li>
-      <div className={style.view} >
-        <label >
-        <div onClick={()=>{history.push(`/details/${id}`)}}>
-          {name}
+      <div className={style.view}>
+        <label>
+          <div
+            onClick={() => {
+              history.push(`/details/${id}`);
+            }}
+          >
+            {name}
           </div>
         </label>
       </div>
@@ -42,21 +45,20 @@ const ListItem = (props: ListItemProps) => {
 };
 
 @connect(mapStateToProps, mapDispatchToProps)
-export class Search extends React.Component<Search.Props, Search.State> {
-
-  constructor(props?: Search.Props, context?: any) {
+export class Search extends React.Component<SearchProps, SearchState> {
+  constructor(props?: SearchProps, context?: any) {
     super(props, context);
     this.state = {
-      searchQuery: ''
+      searchQuery: "",
     };
     this.handleOnChange = this.handleOnChange.bind(this);
     this.handleSearchOnClick = this.handleSearchOnClick.bind(this);
   }
 
-  async componentWillMount() {
+  componentDidMount() {
     const { actions } = this.props;
     // reset searchQuery value in store
-    actions.fetchUserAccount({ searchQuery: '' });
+    actions.fetchUserAccount({ searchQuery: "" });
   }
 
   handleOnChange(e) {
@@ -75,18 +77,32 @@ export class Search extends React.Component<Search.Props, Search.State> {
     return (
       <div className={style.normal}>
         <header>
-        <h1>Elmo FE Demo</h1>
-           <input className={style.edit}
-          type="text"
-          onChange={this.handleOnChange} 
-          placeholder="Please enter user's twitter name or location"/>
-        <Button className={style.button} variant="contained" onClick={this.handleSearchOnClick}>Search</Button>
-      </header>
+          <h1>Elmo FE Demo</h1>
+          <input
+            className={style.edit}
+            type="text"
+            onChange={this.handleOnChange}
+            placeholder="Please enter user's twitter name or other criteria"
+          />
+          <Button
+            className={style.button}
+            variant="contained"
+            onClick={this.handleSearchOnClick}
+          >
+            Search
+          </Button>
+        </header>
         <section className={style.main}>
           <ul className={style.normal}>
-            {users.map(user =>
-              <ListItem key={user.id} name={get(user, 'name')} id={get(user, 'id')} history={history}/>
-            )}
+            {/* dispay all users result from api */}
+            {users.map((user) => (
+              <ListItem
+                key={user.id}
+                name={get(user, "name")}
+                id={get(user, "id")}
+                history={history}
+              />
+            ))}
           </ul>
         </section>
       </div>
@@ -96,12 +112,12 @@ export class Search extends React.Component<Search.Props, Search.State> {
 
 function mapStateToProps(state: RootState) {
   return {
-    users: state.users
+    users: state.users,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(FetchActions as any, dispatch)
+    actions: bindActionCreators(FetchActions as any, dispatch),
   };
 }

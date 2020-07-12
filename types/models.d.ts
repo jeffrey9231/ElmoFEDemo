@@ -11,4 +11,4 @@ declare interface SearchQuery {
   searchQuery: string;
 }
 
-declare type  UsersStoreState = UserAccountDetails[];
+declare type UsersStoreState = UserAccountDetails[];

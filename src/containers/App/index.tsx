@@ -1,19 +1,25 @@
-import * as React from 'react';
-import * as style from '../style.css';
-import Button from '@material-ui/core/Button';
-import { RouteComponentProps } from 'react-router';
+import * as React from "react";
+import Button from "@material-ui/core/Button";
+import { RouteComponentProps } from "react-router";
 
-export namespace App {
-  export interface Props extends RouteComponentProps<void> {}
-}
+import * as style from "../style.css";
 
-export class App extends React.Component<App.Props> {
+export interface AppProps extends RouteComponentProps<void> {}
 
+export class App extends React.Component<AppProps> {
   render() {
     const { history } = this.props;
     return (
       <div className={style.normal}>
-        <Button className={style.button} variant="contained" onClick={()=>{history.push('/search')}}>Go to search page</Button>
+        <Button
+          className={style.button}
+          variant="contained"
+          onClick={() => {
+            history.push("/search");
+          }}
+        >
+          Go to search page
+        </Button>
       </div>
     );
   }

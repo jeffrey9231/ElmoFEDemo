@@ -1,57 +1,39 @@
-# Frontend Boilerplate with React, Redux & TypeScript
+## Elmo - Frontend Demo (React, Redux, TypeScript & Jest)
 
-A bare minimum react-redux-webpack-typescript boilerplate with TodoMVC example.
+## Feature
 
-Note that this project does not include **Server-Side Rendering**,  **Testing Frameworks** and other stuffs that makes the package unnecessarily complicated.
+- Integrated [twitter](https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-users-search) API to search and get users information.
 
-Ideal for creating React apps from the scratch.
+## Installation
 
-See also: [react-mobx-typescript-boilerplate](https://github.com/rokoroku/react-mobx-typescript-boilerplate)
+- node
 
-### Branches
-- [`feature-tslint`](https://github.com/rokoroku/react-redux-typescript-boilerplate/tree/feature/tslint): yarn + tslint + prettier integrated branch.
+Need to install [node](https://nodejs.org/en/download/) as the run time environment.
 
-## Contains
+- start the app on http://localhost:3000/
 
-- [x] [Typescript](https://www.typescriptlang.org/) 2.5
-- [x] [React](https://facebook.github.io/react/) 16.0
-- [x] [Redux](https://github.com/reactjs/redux) 3.7
-- [x] [React Router](https://github.com/ReactTraining/react-router) 4.2
-- [x] [Redux DevTools Extension](https://github.com/zalmoxisus/redux-devtools-extension)
-- [x] [TodoMVC example](http://todomvc.com)
-
-### Build tools
-
-- [x] [Webpack](https://webpack.github.io) 3
-  - [x] [Tree Shaking](https://medium.com/@Rich_Harris/tree-shaking-versus-dead-code-elimination-d3765df85c80)
-  - [x] [Webpack Dev Server](https://github.com/webpack/webpack-dev-server)
-- [x] [Awesome Typescript Loader](https://github.com/s-panferov/awesome-typescript-loader)
-- [x] [PostCSS Loader](https://github.com/postcss/postcss-loader)
-  - [x] [CSS next](https://github.com/MoOx/postcss-cssnext)
-  - [x] [CSS modules](https://github.com/css-modules/css-modules)
-- [x] [React Hot Loader](https://github.com/gaearon/react-hot-loader)
-- [x] [ExtractText Plugin](https://github.com/webpack/extract-text-webpack-plugin)
-- [x] [HTML Webpack Plugin](https://github.com/ampedandwired/html-webpack-plugin)
-
-
-## Setup
-
-```
-$ npm install
+```bash
+yarn && yarn start
 ```
 
-## Running
+- start the api server on http://localhost:3001/  see [here](https://github.com/jeffrey9231/ElmoBEDemo) 
 
-```
-$ npm start
-```
+## Test
 
-## Build
-
-```
-$ npm run build
+```bash
+yarn test
 ```
 
-# License
+## Tech
 
-MIT
+- [Typescript](https://www.typescriptlang.org/) 
+- [React](https://facebook.github.io/react/) 
+- [Redux](https://github.com/reactjs/redux) 
+- [React Router](https://github.com/ReactTraining/react-router) 
+- [Jest](https://jestjs.io/) 
+
+
+## Todos
+- Fix TS type error in dependencies
+- Add loading status to each page
+- Add error handler of api responds

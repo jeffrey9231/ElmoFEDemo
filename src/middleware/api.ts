@@ -1,6 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
-const API_URL = `http://localhost:3000/v1`;
+const API_URL = `http://localhost:3001/v1`;
 
 function searchUserAccount(searchQuery: string): Promise<any> {
   return axios
@@ -9,10 +9,9 @@ function searchUserAccount(searchQuery: string): Promise<any> {
 }
 
 function showUserAccount(searchQuery: string): Promise<any> {
-    return axios
-      .get(`${API_URL}/details?id=${searchQuery}`)
-      .then((res) => res.data);
-  }
-
+  return axios
+    .get(`${API_URL}/details?id=${searchQuery}`)
+    .then((res) => res.data);
+}
 
 export default { searchUserAccount, showUserAccount };
