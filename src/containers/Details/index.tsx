@@ -38,6 +38,7 @@ export class Details extends React.Component<DetailsProps> {
   componentDidMount() {
     const { match, actions } = this.props;
     // small ts issue of match.params just leave it to TODO
+    // fetch user detail by user_id from url param
     actions.fetchUserAccountDetail({ searchQuery: match.params.user_id });
   }
 
